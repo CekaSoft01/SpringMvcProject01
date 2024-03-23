@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +36,7 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public ClubDto findClubById(long id) {
-        Club club=clubRepository.findById(id).get();
+        Club club=clubRepository.findById(id).orElseThrow();
         return mapToClubDto(club);
 
     }
