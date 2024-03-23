@@ -4,7 +4,6 @@ import com.rungroup.web.dto.ClubDto;
 import com.rungroup.web.models.Club;
 import com.rungroup.web.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +22,7 @@ public class ClubController {
         this.clubService = clubService;
     }
 
-    @GetMapping("/clubs")
+    @GetMapping("/clubs")//http://localhost:8080/clubs
     public String listClubs(Model model) {
         List<ClubDto> clubs = clubService.findAllClubs();
         model.addAttribute("clubs", clubs);
