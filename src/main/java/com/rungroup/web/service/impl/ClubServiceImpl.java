@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.rungroup.web.mapper.ClupMapper.mapToClub;
+import static com.rungroup.web.mapper.ClupMapper.mapToClubDto;
+
 @Service
 public class ClubServiceImpl implements ClubService {
     private ClubRepository clubRepository;
@@ -25,7 +28,7 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public List<ClubDto> findAllClubs() {
        List<Club> clubs=clubRepository.findAll();
-       return clubs.stream().map(this::mapToClubDto).collect(Collectors.toList());//bize dto olarak dönecek
+       return clubs.stream().map((club -> mapToClubDto(club))).collect(Collectors.toList());//bize dto olarak dönecek
     }
 
     @Override
@@ -60,31 +63,5 @@ public class ClubServiceImpl implements ClubService {
         return  clubs.stream().map(club->mapToClubDto(club)).collect(Collectors.toList());
 }
 
-    private Club mapToClub(ClubDto clubDto) {
-        Club club=Club.builder()
-                .id(clubDto.getId())
-                .title(clubDto.getTitle())
-                .photoUrl(clubDto.getPhotoUrl())
-                .content(clubDto.getContent())
-                .createdOn(clubDto.getCreatedOn())
-                .updatedOn(clubDto.getUpdatedOn())
 
-                .build();
-        return club;
-
-    }
-
-    private ClubDto mapToClubDto(Club club){
-        ClubDto clubDto=ClubDto.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-        return  clubDto;
-
-
-    }
 }
