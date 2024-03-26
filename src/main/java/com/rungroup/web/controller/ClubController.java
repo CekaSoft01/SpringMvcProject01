@@ -4,6 +4,7 @@ import com.rungroup.web.dto.ClubDto;
 import com.rungroup.web.models.Club;
 import com.rungroup.web.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -84,14 +85,15 @@ public class ClubController {
     @PostMapping("/clubs/{clubId}/edit")
     public String updateClub(@PathVariable("clubId") Long id,
                              @Valid @ModelAttribute("club") ClubDto clubDto,
-                             BindingResult bindingResult) {
+                             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("club",clubDto);
             return "clubs-edit";//validation da hata varsa sayfayı gönder
         }
         clubDto.setId(id);
         clubService.updateClub(clubDto);
         return "redirect:/clubs";
-    }//ondrt
+    }
 
 
 }

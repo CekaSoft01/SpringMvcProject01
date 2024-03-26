@@ -1,6 +1,7 @@
 package com.rungroup.web.dto;
 
 
+import com.rungroup.web.models.Club;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class EventDto {
     private LocalDateTime createOn;
 
     private LocalDateTime updatedOn;
+    private Club club;
 
 
 }
