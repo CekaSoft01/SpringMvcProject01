@@ -1,5 +1,6 @@
 package com.rungroup.web.dto;
 
+import com.rungroup.web.models.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,6 +27,8 @@ public class ClubDto {
     private String content;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
+
+    private UserEntity createdBy;
 
     private List<EventDto> events;
 }

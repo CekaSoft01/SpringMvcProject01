@@ -27,6 +27,9 @@ public class Club {
 
     @CreationTimestamp
     private LocalDateTime createdOn;
+    @ManyToOne
+    @JoinColumn(name = "created_by",nullable = false)
+    private  UserEntity createdBy;
 
     @UpdateTimestamp
     private LocalDateTime updatedOn;
