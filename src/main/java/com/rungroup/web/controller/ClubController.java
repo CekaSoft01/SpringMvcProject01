@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping()//http://localhost:8080
-public class ClubController {
+public class ClubController {//yirmi
     private ClubService clubService;
 
     @Autowired
